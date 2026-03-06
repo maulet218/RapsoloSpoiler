@@ -109,9 +109,9 @@ window.onload = function () {
       switch (textoEntrada) {
         case "> rapsolo":
           mensaje = [
-            "> Bienvenido Rapsolo, vamos a proceder a crear una nueva carta para la coleccion de [Nombre Coleccion].\n" +
+            "> Bienvenido Rapsolo, vamos a proceder a crear una nueva carta para la coleccion de Unleashed.\n" +
             "> Lo primero de todo, determine el color de la carta.\n" +
-            "> Wellcome Rapsolo, we are going to create a new card for the [Nombre Coleccion] collection.\n" +
+            "> Wellcome Rapsolo, we are going to create a new card for the Unleashed collection.\n" +
             "> First, determine the color of the card.\n"
           ];
           break;
