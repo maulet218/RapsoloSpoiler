@@ -82,10 +82,11 @@ window.onload = function () {
     inputField.classList.remove("hidden");
     inputField.focus();
     var text = [
-      "> Bienvenido al generador de cartas de Riftbound \n" +
-      "> Por favor introduzca usuario y pulse enter.\n",
-      "> Wellcome to Riftbound card generator \n" +
-      "> Por enter your user and press enter.\n"
+      "> Conectando a servidor interno... \n" +
+      "> Dominio detectado: RIFTBOUND-GAMES.INTERNAL.\n",
+      "> Acceso restringido. \n" +
+      "Introduzca su usuario: \n"
+
     ];
     latencia = 20;
     type(text, screen, function () {
@@ -106,40 +107,65 @@ window.onload = function () {
       let textoEntrada = inputField.value.toLowerCase();
       inputField.value = "> ";
       let mensaje = "";
-      switch (textoEntrada) {
-        case "> rapsolo":
+      switch (textoEntrada.toLowerCase()) {
+        case "> admin":
           mensaje = [
-            "> Bienvenido Rapsolo, vamos a proceder a crear una nueva carta para la coleccion de Unleashed.\n" +
-            "> Lo primero de todo, determine el color de la carta.\n" +
-            "> Wellcome Rapsolo, we are going to create a new card for the Unleashed collection.\n" +
-            "> First, determine the color of the card.\n"
+            "> Usuario encontrado.\n" +
+            "> Introduzca contraseña:\n"
           ];
           break;
-        case "> blue":
+        case "> 1234":
           mensaje = [
-            "> Color azul establecido, para poder continuar introduce el coste de la carta.\n" +
-            "> Blue color selected, to continue introduce the card cost.\n"
+            "> Verificando credenciales...\n" +
+            "> ...\n" +
+            "> Acceso limitado concedido.\n" +
+            "> === RIFTBOUND BACKOFFICE v2.3 ===.\n" +
+            ">Seleccione una acción:.\n" +
+            ">1 - Diseñar nueva carta.\n" +
+            ">2 - Banear carta.\n" +
+            ">3 - Ver próximos spoilers.\n"
           ];
           break;
 
-        case "> 4":
+        case "> 3":
           mensaje = [
-            "> Coste 4 seleccionado, ni mucho ni poco.\n" +
-            "> Siguiente paso, seleccione el tipo.\n" +
-            "> Cost 4 selected, not too much, not too little.\n" +
-            "> Next step, select the type.\n"
+            "> Accediendo a base de datos de spoilers...\n" +
+            "> Seleccione set:\n" +
+            "> 1 - Origins\n" +
+            "> 2 - Spiritforged\n"
           ];
           break;
-        case "> gear":
+        case "> 2":
           mensaje = [
-            "> Tipo gear seleccionado, con esto ya tenemos suficiente para crear tu carta personalizada.\n" +
-            "> Gear type selected, we have enough information to create your customized card.\n" +
-            "> Exterminating yordles...\n" +
-            "> Giving Draven a new Axe...\n" +
-            "> Carta generada con exito!\n" +
-            "> Mostrando en 3...\n" +
-            "> 2...\n" +
-            "> 1...\n"
+            "> Advertencia:\n" +
+            "> Los spoilers están protegidos por protocolo interno.\n" +
+            "> Para forzar acceso escriba:\n" +
+            "> OVERRIDE"
+          ];
+          break;
+
+        case "> override":
+          mensaje = [
+            "> Forzando acceso...\n" +
+            "> ...\n" +
+            "> Archivo encontrado.\n" +
+            ">SPIRITFORGED_CARD_██.DAT" +
+            "> Para descargar escriba:\n" +
+            "> DOWNLOAD\n"
+          ];
+          break;
+        case "> download":
+          mensaje = [
+            "> Descargando archivo...\n" +
+            "> █░░░░░░░░░ 10 %\n" +
+            "> ███░░░░░░░ 35 %\n" +
+            "> ██████░░░░ 60 %\n" +
+            "> ████████░░ 85 %\n" +
+            "> ██████████ 100 %\n" +
+            "\n" +
+            "> Archivo abierto.\n" +
+            "\n" +
+            "> Mostrando carta..."
           ];
           break;
         default:
@@ -148,13 +174,13 @@ window.onload = function () {
       if (mensaje != "") {
         type([mensaje], screen, function () {
           inputField.focus();
-          if (mensaje[0].includes("> Tipo gear seleccionado, con esto ya tenemos suficiente para crear tu carta personalizada.\n")) {
+          if (mensaje[0].includes("> Descargando archivo...\n")) {
             showCard();
           }
         });
       } else {
         type(
-          ["> Usuario no encontrado, prueba otra vez.\n"],
+          ["> Comando incorrecto, iniciando protocolo de reinico...\n"],
           screen,
           function () {
             inputField.focus();
