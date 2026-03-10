@@ -142,7 +142,7 @@ function startTypingSequence() {
       inputField.classList.remove("hidden");
       inputField.focus();
     });
-  },1);
+  }, 1);
 
   // Eventos del input
   inputField.addEventListener("keydown", function (event) {
@@ -195,11 +195,20 @@ function startTypingSequence() {
       }
 
       if (mensaje != "") {
-        type(mensaje, screen, function () { inputField.focus(); });
+        type([mensaje], screen, function () {
+          inputField.focus();
+          if (mensaje[0].includes("> Descargando archivo...\n")) {
+            showCard(0);
+          } else if (mensaje[0].includes("> Descargando archivo desencriptado...\n")) {
+            showCard(1);
+          }
+        });
+      } else {
+        type(["> Comando incorrecto, iniciando protocolo de reinico...\n"], screen, function () { inputField.focus(); });
       }
     }
   });
-}
+};
 
 // Efectos de glitch para cartas (ejemplo)
 function showCard(cardnumber) {
