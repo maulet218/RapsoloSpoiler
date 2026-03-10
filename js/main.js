@@ -156,27 +156,50 @@ function startTypingSequence() {
           break;
         case "> 1234":
           mensaje = [
-            "> Verificando credenciales...\n> ...\n> Acceso limitado concedido.\n" +
-            "> === RIFTBOUND BACKOFFICE v2.3 ===.\n> Seleccione una acción:.\n" +
-            "> 1 - Diseñar nueva carta.\n> 2 - Banear carta.\n> 3 - Ver próximos spoilers.\n"
+            "> Verificando credenciales...\n" +
+            "> ...\n" +
+            "> Acceso ilimitado concedido.\n" +
+            "> === RIFTBOUND BACKOFFICE v2.3 ===.\n" +
+            "> Seleccione una acción:\n" +
+            "> 1 - Banear carta.\n" +
+            "> 2 - Ver próximos spoilers.\n" +
+            "> 3 - Diseñar nueva carta. \n"
           ];
           break;
-        case "> 3":
+
+        case "> 1":
           mensaje = [
-            "> Accediendo a base de datos de spoilers...\n> Seleccione set:\n" +
-            "> 0 - Origins\n> 1 - Spiritforged\n> 2 - Unleash (cooming soon)\n"
+            "> Deja de llorar por favor y centrate:\n" +
+            "> Selecciona un set anda:\n" +
+            "> 1 - Origins\n" +
+            "> 2 - Spiritforged\n" +
+            "> 3 - Unleash (cooming soon)\n"
           ];
           break;
         case "> 2":
           mensaje = [
-            "> Advertencia:\n> Los spoilers futuros están protegidos por protocolo interno.\n" +
-            "> Para forzar acceso escriba:\n> OVERRIDE\n"
+            "> Accediendo a base de datos de spoilers...\n" +
+            "> Seleccione set:\n" +
+            "> 1 - Origins\n" +
+            "> 2 - Spiritforged\n" +
+            "> 3 - Unleash (cooming soon)\n"
+          ];
+          break;
+        case "> 3":
+          mensaje = [
+            "> Advertencia:\n" +
+            "> Los spoilers futuros están protegidos por protocolo interno.\n" +
+            "> Para forzar acceso escriba:\n" +
+            "> OVERRIDE\n"
           ];
           break;
         case "> override":
           mensaje = [
-            "> Forzando acceso...\n> ...\n> Archivo encontrado.\n" +
-            "> SPIRITFORGED_CARD_██.DAT\n> Para descargar escriba:\n> DOWNLOAD\n"
+            "> Forzando acceso...\n" +
+            "> ...\n> Archivo encontrado.\n" +
+            "> SPIRITFORGED_CARD_██.DAT\n" +
+            "> Para descargar escriba:\n" +
+            "> DOWNLOAD\n"
           ];
           break;
         case "> download":
