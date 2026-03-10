@@ -170,10 +170,10 @@ function startTypingSequence() {
         case "> 1":
           mensaje = [
             "> Deja de llorar por favor y centrate:\n" +
-            "> Selecciona un set anda:\n" +
-            "> 1 - Origins\n" +
-            "> 2 - Spiritforged\n" +
-            "> 3 - Unleash (cooming soon)\n"
+            "> Selecciona una acción anda:\n" +
+            "> 1 - Banear carta.\n" +
+            "> 2 - Ver próximos spoilers.\n" +
+            "> 3 - Diseñar nueva carta. \n"
           ];
           break;
         case "> 2":
