@@ -120,7 +120,7 @@ window.onload = function () {
             "> ...\n" +
             "> Acceso limitado concedido.\n" +
             "> === RIFTBOUND BACKOFFICE v2.3 ===.\n" +
-            ">Seleccione una acción:.\n" +
+            "> Seleccione una acción:.\n" +
             ">1 - Diseñar nueva carta.\n" +
             ">2 - Banear carta.\n" +
             ">3 - Ver próximos spoilers.\n"
@@ -175,7 +175,10 @@ window.onload = function () {
         type([mensaje], screen, function () {
           inputField.focus();
           if (mensaje[0].includes("> Descargando archivo...\n")) {
-            showCard();
+            showCard(0);
+          }
+          else if (mensaje[0].includes("> Descargando archivo desencriptado...\n")) {
+            showCard(1);
           }
         });
       } else {
@@ -199,29 +202,70 @@ let ypos = Array(cols).fill(0);
 
 ctx.fillStyle = "#000";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
-function showCard() {
-  // create a full-screen overlay that will contain the image
+function showCard(cardnumber) {
+
   const overlay = document.createElement('div');
   overlay.className = 'card-overlay';
 
   const img = document.createElement('img');
-  img.src = 'images/spoiler.jpeg';
-  img.alt = 'Spoiler Card';
 
-  // once the image has loaded we can optionally perform additional setup
-  img.addEventListener('load', () => {
-    // the CSS animations defined in main.css handle zooming and panning
-  });
+  if (cardnumber === 0) {
+    img.src = 'images/spoiler0.jpeg';
+  } else {
+    img.src = 'images/spoiler1.jpeg';
+  }
+
+  img.alt = 'Spoiler Card';
 
   overlay.appendChild(img);
   document.body.appendChild(overlay);
 
-  // remove the overlay after a while (e.g. 15 seconds) to return to the matrix effect
+  // SOLO si mostramos la pixelada primero
+  if (cardnumber === 0) {
+
+    setTimeout(() => {
+
+      decryptReveal(img);
+
+    }, 3000);
+
+  }
+
   setTimeout(() => {
     if (overlay.parentNode) {
       overlay.parentNode.removeChild(overlay);
     }
   }, 15000);
+}
+function decryptReveal(imgElement) {
+
+  let steps = 10;
+  let current = 0;
+
+  const interval = setInterval(() => {
+
+    const blur = (steps - current) * 3;
+    const pixel = (steps - current) * 4;
+
+    imgElement.style.filter =
+      "blur(" + blur + "px) contrast(120%)";
+
+    imgElement.style.imageRendering = "pixelated";
+
+    current++;
+
+    if (current >= steps) {
+
+      clearInterval(interval);
+
+      imgElement.src = "images/spoiler1.jpeg";
+      imgElement.style.filter = "none";
+      imgElement.style.imageRendering = "auto";
+
+    }
+
+  }, 120);
+
 }
 function matrix() {
   const w = window.innerWidth;
