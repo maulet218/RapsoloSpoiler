@@ -152,7 +152,7 @@ function startTypingSequence() {
       inputField.value = "> ";
       let mensaje = "";
       switch (textoEntrada.toLowerCase()) {
-        case "> admin":
+        case "> rapsolo":
           mensaje = [
             "> User found.\n" +
             "> Enter password:\n"];
@@ -242,13 +242,13 @@ function showCard(cardnumber) {
   const overlay = document.createElement('div');
   overlay.className = 'card-overlay';
   const img = document.createElement('img');
-  img.src = 'images/spoiler00.png';
+  img.src = 'images/spoiler00.jpg';
   img.alt = 'Spoiler Card';
   overlay.appendChild(img);
   document.body.appendChild(overlay);
-  setTimeout(() => glitchDecrypt(img, "images/spoiler01.png", 20), 2000);
-  setTimeout(() => glitchDecrypt(img, "images/spoiler03.png", 80), 5000);
-  setTimeout(() => glitchDecrypt(img, "images/spoiler02.png", 80), 6000);
+  setTimeout(() => glitchDecrypt(img, "images/spoiler01.jpg", 20), 2000);
+  setTimeout(() => glitchDecrypt(img, "images/spoiler02.jpg", 20), 5000);
+  setTimeout(() => glitchDecrypt(img, "images/spoiler03.jpg", 30), 7000);
   setTimeout(() => {
     if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
   }, 45000);
