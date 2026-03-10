@@ -132,10 +132,11 @@ function startTypingSequence() {
     inputField.focus();
 
     const text = [
-      "> Conectando a servidor interno... \n" +
-      "> Dominio detectado: RIFTBOUND-GAMES.INTERNAL.\n",
-      "> Acceso restringido. \n" +
-      "> Introduzca su usuario: \n"
+      "> Connecting to the VPN... \n" +
+      "> Connecting to internal server... \n" +
+      "> Domain Detected: RIFTBOUND-GAMES.INTERNAL.\n",
+      "> Access restricted. \n" +
+      "> Enter your username: \n"
     ];
 
     type(text, screen, function () {
@@ -152,34 +153,36 @@ function startTypingSequence() {
       let mensaje = "";
       switch (textoEntrada.toLowerCase()) {
         case "> admin":
-          mensaje = ["> Usuario encontrado.\n> Introduzca contraseña:\n"];
+          mensaje = [
+            "> User found.\n" +
+            "> Enter password:\n"];
           break;
         case "> 1234":
           mensaje = [
-            "> Verificando credenciales...\n" +
+            "> Verifying credentials...\n" +
             "> ...\n" +
-            "> Acceso ilimitado concedido.\n" +
+            "> Unlimited access granted.\n" +
             "> === RIFTBOUND BACKOFFICE v2.3 ===.\n" +
-            "> Seleccione una acción:\n" +
-            "> 1 - Banear carta.\n" +
-            "> 2 - Ver próximos spoilers.\n" +
-            "> 3 - Diseñar nueva carta. \n"
+            "> Select an action:\n" +
+            "> 1 - Ban card.\n" +
+            "> 2 - View upcoming spoilers.\n" +
+            "> 3 - Design new card. \n"
           ];
           break;
 
         case "> 1":
           mensaje = [
-            "> Deja de llorar por favor y centrate:\n" +
-            "> Selecciona una acción anda:\n" +
-            "> 1 - Banear carta.\n" +
-            "> 2 - Ver próximos spoilers.\n" +
-            "> 3 - Diseñar nueva carta. \n"
+            "> Stop crying please and focus:\n" +
+            "> Select an action:\n" +
+            "> 1 - Ban card.\n" +
+            "> 2 - View upcoming spoilers.\n" +
+            "> 3 - Design new card. \n"
           ];
           break;
         case "> 2":
           mensaje = [
-            "> Accediendo a base de datos de spoilers...\n" +
-            "> Seleccione set:\n" +
+            "> Accessing spoilers database...\n" +
+            "> Select set:\n" +
             "> 1 - Origins\n" +
             "> 2 - Spiritforged\n" +
             "> 3 - Unleash (cooming soon)\n"
@@ -187,47 +190,48 @@ function startTypingSequence() {
           break;
         case "> 3":
           mensaje = [
-            "> Advertencia:\n" +
-            "> Los spoilers futuros están protegidos por protocolo interno.\n" +
-            "> Para forzar acceso escriba:\n" +
+            "> Warning:\n" +
+            "> The future spoilers are protected by internal protocol.\n" +
+            "> To force access type:\n" +
             "> OVERRIDE\n"
           ];
           break;
         case "> override":
           mensaje = [
-            "> Forzando acceso...\n" +
-            "> ...\n> Archivo encontrado.\n" +
+            "> Forcing access...\n" +
+            "> ...\n>" +
+            "> File found.\n" +
             "> SPIRITFORGED_CARD_██.DAT\n" +
-            "> Para descargar escriba:\n" +
+            "> To download type:\n" +
             "> DOWNLOAD\n"
           ];
           break;
         case "> download":
           mensaje = [
-            "> Descargando archivo...\n" +
+            "> Downloading file...\n" +
             "> █░░░░░░░░░ 10 %\n" +
             "> ███░░░░░░░ 35 %\n" +
             "> ██████░░░░ 60 %\n" +
             "> ████████░░ 85 %\n" +
-            "> ██████████ 100 %\n\n> Archivo abierto.\n\n> Mostrando carta..."
+            "> ██████████ 100 %\n\n> File opened.\n\n> Displaying card..."
           ];
           break;
         default:
-          mensaje = ["> Comando incorrecto, iniciando protocolo de reinicio...\n"];
+          mensaje = ["> Incorrect command, initializing restart protocol...\n"];
           break;
       }
 
       if (mensaje != "") {
         type([mensaje], screen, function () {
           inputField.focus();
-          if (mensaje[0].includes("> Descargando archivo...\n")) {
+          if (mensaje[0].includes("> Downloading file...\n")) {
             showCard(0);
-          } else if (mensaje[0].includes("> Descargando archivo desencriptado...\n")) {
+          } else if (mensaje[0].includes("> Downloading decrypted file...\n")) {
             showCard(1);
           }
         });
       } else {
-        type(["> Comando incorrecto, iniciando protocolo de reinico...\n"], screen, function () { inputField.focus(); });
+        type(["> Incorrect command, initializing restart protocol...\n"], screen, function () { inputField.focus(); });
       }
     }
   });
@@ -242,16 +246,15 @@ function showCard(cardnumber) {
   img.alt = 'Spoiler Card';
   overlay.appendChild(img);
   document.body.appendChild(overlay);
-  setTimeout(() => glitchDecrypt(img, "images/spoiler01.png"), 3000);
-  setTimeout(() => glitchDecrypt(img, "images/spoiler03.png"), 4000);
-
-  setTimeout(() => glitchDecrypt(img, "images/spoiler02.png"), 5000);
+  setTimeout(() => glitchDecrypt(img, "images/spoiler01.png", 20), 2000);
+  setTimeout(() => glitchDecrypt(img, "images/spoiler03.png", 80), 5000);
+  setTimeout(() => glitchDecrypt(img, "images/spoiler02.png", 80), 6000);
   setTimeout(() => {
     if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
   }, 45000);
 }
 
-function glitchDecrypt(img, route) {
+function glitchDecrypt(img, route, time) {
   let glitches = 0;
   const glitchInterval = setInterval(() => {
     const randX = Math.floor(Math.random() * 20) - 10;
@@ -267,5 +270,5 @@ function glitchDecrypt(img, route) {
       img.style.transform = "none";
       img.style.filter = "none";
     }
-  }, 80);
+  }, time);
 }
