@@ -68,7 +68,7 @@ function type(text, screen, callback, latencia = 50) {
     else if (character === " ") screen.insertBefore(document.createTextNode("\u00A0"), prompt);
     else if (character !== "") {
       screen.insertBefore(document.createTextNode(character), prompt);
-      if (audioEnabled && keySound && character !== "#") {
+      if (audioEnabled && keySound && character !== "#" && character !== "_") {
         keySound.currentTime = 0;
         keySound.play().catch(() => { });
       }
