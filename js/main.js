@@ -238,30 +238,32 @@ function showCard(cardnumber) {
   const overlay = document.createElement('div');
   overlay.className = 'card-overlay';
   const img = document.createElement('img');
-  img.src = 'images/spoiler0.jpeg';
+  img.src = 'images/spoiler00.png';
   img.alt = 'Spoiler Card';
   overlay.appendChild(img);
   document.body.appendChild(overlay);
+  setTimeout(() => glitchDecrypt(img, "images/spoiler01.png"), 3000);
+  setTimeout(() => glitchDecrypt(img, "images/spoiler03.png"), 4000);
 
-  setTimeout(() => glitchDecrypt(img), 2500);
+  setTimeout(() => glitchDecrypt(img, "images/spoiler02.png"), 5000);
   setTimeout(() => {
     if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-  }, 15000);
+  }, 45000);
 }
 
-function glitchDecrypt(img) {
+function glitchDecrypt(img, route) {
   let glitches = 0;
   const glitchInterval = setInterval(() => {
     const randX = Math.floor(Math.random() * 20) - 10;
     const randY = Math.floor(Math.random() * 20) - 10;
     img.style.transform = `translate(${randX}px,${randY}px)`;
     img.style.filter = `contrast(150%) hue-rotate(${Math.random() * 360}deg)`;
-    if (Math.random() > 0.6) img.src = "images/spoiler1.jpeg";
-    else img.src = "images/spoiler0.jpeg";
+    if (Math.random() > 0.6) img.src = route;
+    else img.src = route;
     glitches++;
     if (glitches > 25) {
       clearInterval(glitchInterval);
-      img.src = "images/spoiler1.jpeg";
+      img.src = route;
       img.style.transform = "none";
       img.style.filter = "none";
     }
