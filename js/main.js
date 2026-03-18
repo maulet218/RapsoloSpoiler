@@ -259,9 +259,9 @@ function showCard(cardnumber) {
   // Aquí hacemos la transición real
   setTimeout(() => morphImages(img1, img2, "images/spoiler03.jpg"), 7000);
 
-  setTimeout(() => {
-    if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-  }, 45000);
+  // setTimeout(() => {
+  //   if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+  // }, 45000);
 }
 
 function glitchDecrypt(img, route, time) {
@@ -285,8 +285,8 @@ function glitchDecrypt(img, route, time) {
 function glitchEffect(img, duration) {
   let time = 0;
   const interval = setInterval(() => {
-    img.style.transform = `translate(${Math.random()*10-5}px, ${Math.random()*10-5}px)`;
-    img.style.filter = `hue-rotate(${Math.random()*360}deg) contrast(200%)`;
+    img.style.transform = `translate(${Math.random() * 10 - 5}px, ${Math.random() * 10 - 5}px)`;
+    img.style.filter = `hue-rotate(${Math.random() * 360}deg) contrast(200%)`;
 
     time += 50;
     if (time > duration) {
@@ -308,15 +308,12 @@ function morphImages(imgA, imgB, newSrc) {
   imgA.style.opacity = 1;
   imgB.style.opacity = 0;
 
-  // Pequeño glitch previo
   glitchEffect(imgA, 300);
 
   setTimeout(() => {
     imgA.style.opacity = 0;
     imgB.style.opacity = 1;
   }, 200);
-
-  // Opcional: limpiar
   setTimeout(() => {
     imgA.src = newSrc;
     imgA.style.opacity = 1;
