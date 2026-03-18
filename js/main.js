@@ -157,7 +157,7 @@ function startTypingSequence() {
             "> User found.\n" +
             "> Enter password:\n"];
           break;
-        case "> 1234":
+        case "> ******":
           mensaje = [
             "> Verifying credentials...\n" +
             "> ...\n" +
@@ -206,7 +206,7 @@ function startTypingSequence() {
             "> DOWNLOAD\n"
           ];
           break;
-        case "> ******":
+        case "> download":
           mensaje = [
             "> Downloading file...\n" +
             "> █░░░░░░░░░ 10 %\n" +
