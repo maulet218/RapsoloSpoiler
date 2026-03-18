@@ -206,7 +206,7 @@ function startTypingSequence() {
             "> DOWNLOAD\n"
           ];
           break;
-        case "> download":
+        case "> ******":
           mensaje = [
             "> Downloading file...\n" +
             "> █░░░░░░░░░ 10 %\n" +
