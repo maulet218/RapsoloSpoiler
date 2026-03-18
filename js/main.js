@@ -256,12 +256,7 @@ function showCard(cardnumber) {
   setTimeout(() => glitchDecrypt(img1, "images/spoiler01.jpg", 20), 2000);
   setTimeout(() => glitchDecrypt(img1, "images/spoiler02.jpg", 20), 5000);
 
-  // Aquí hacemos la transición real
   setTimeout(() => morphImages(img1, img2, "images/spoiler03.jpg"), 7000);
-
-  // setTimeout(() => {
-  //   if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-  // }, 45000);
 }
 
 function glitchDecrypt(img, route, time) {
