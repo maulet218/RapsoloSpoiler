@@ -241,14 +241,24 @@ function startTypingSequence() {
 function showCard(cardnumber) {
   const overlay = document.createElement('div');
   overlay.className = 'card-overlay';
-  const img = document.createElement('img');
-  img.src = 'images/spoiler00.jpg';
-  img.alt = 'Spoiler Card';
-  overlay.appendChild(img);
+
+  const img1 = document.createElement('img');
+  const img2 = document.createElement('img');
+
+  img1.src = 'images/spoiler00.jpg';
+  img2.style.opacity = 0;
+
+  overlay.appendChild(img1);
+  overlay.appendChild(img2);
+
   document.body.appendChild(overlay);
-  setTimeout(() => glitchDecrypt(img, "images/spoiler01.jpg", 20), 2000);
-  setTimeout(() => glitchDecrypt(img, "images/spoiler02.jpg", 20), 5000);
-  setTimeout(() => glitchDecrypt(img, "images/spoiler03.jpg", 30), 7000);
+
+  setTimeout(() => glitchDecrypt(img1, "images/spoiler01.jpg", 20), 2000);
+  setTimeout(() => glitchDecrypt(img1, "images/spoiler02.jpg", 20), 5000);
+
+  // Aquí hacemos la transición real
+  setTimeout(() => morphImages(img1, img2, "images/spoiler03.jpg"), 7000);
+
   setTimeout(() => {
     if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
   }, 45000);
@@ -271,4 +281,45 @@ function glitchDecrypt(img, route, time) {
       img.style.filter = "none";
     }
   }, time);
+}
+function glitchEffect(img, duration) {
+  let time = 0;
+  const interval = setInterval(() => {
+    img.style.transform = `translate(${Math.random()*10-5}px, ${Math.random()*10-5}px)`;
+    img.style.filter = `hue-rotate(${Math.random()*360}deg) contrast(200%)`;
+
+    time += 50;
+    if (time > duration) {
+      clearInterval(interval);
+      img.style.transform = "none";
+      img.style.filter = "none";
+    }
+  }, 50);
+}
+function morphImages(imgA, imgB, newSrc) {
+  imgB.src = newSrc;
+
+  imgA.style.position = "absolute";
+  imgB.style.position = "absolute";
+
+  imgA.style.transition = "opacity 1.5s ease";
+  imgB.style.transition = "opacity 1.5s ease";
+
+  imgA.style.opacity = 1;
+  imgB.style.opacity = 0;
+
+  // Pequeño glitch previo
+  glitchEffect(imgA, 300);
+
+  setTimeout(() => {
+    imgA.style.opacity = 0;
+    imgB.style.opacity = 1;
+  }, 200);
+
+  // Opcional: limpiar
+  setTimeout(() => {
+    imgA.src = newSrc;
+    imgA.style.opacity = 1;
+    imgB.style.opacity = 0;
+  }, 2000);
 }

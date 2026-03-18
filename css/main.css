@@ -107,7 +107,7 @@ input[type="text"] {
 .card-overlay img {
     max-width: 80%;
     max-height: 80%;
-    transition: all 0.08s;
+    /* transition: all 0.08s; */
 }
 
 /* #screen {
